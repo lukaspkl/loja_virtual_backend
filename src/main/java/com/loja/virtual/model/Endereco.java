@@ -3,8 +3,12 @@ package com.loja.virtual.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.loja.virtual.enums.TipoEndereco;
+
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,6 +32,7 @@ public class Endereco implements Serializable {
 	private String ruaLogradouro;
 	private String cep;
 	private String numero;
+	private String complemento;
 	private String bairro;
 	private String uf;
 	private String cidade;
@@ -35,6 +40,27 @@ public class Endereco implements Serializable {
 	@ManyToOne(targetEntity = Pessoa.class)
 	@JoinColumn(name = "pessoa_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_fk"))
 	private Pessoa pessoa;
+	
+	
+	
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	@Enumerated(EnumType.STRING)
+	private TipoEndereco tipoendereco;
+	
+	public void setTipoendereco(TipoEndereco tipoendereco) {
+		this.tipoendereco = tipoendereco;
+	}
+	
+	public TipoEndereco getTipoendereco() {
+		return tipoendereco;
+	}
 
 	public Long getId() {
 		return id;
