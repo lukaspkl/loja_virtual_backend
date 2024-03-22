@@ -32,7 +32,7 @@ public class Endereco implements Serializable {
 	private String ruaLogradouro;
 	private String cep;
 	private String numero;
-	private String complemento;
+	private String complemento; 
 	private String bairro;
 	private String uf;
 	private String cidade;
